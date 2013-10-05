@@ -1,8 +1,8 @@
 var uniqueID;
 
 function completed() {
-  alert('hooray');
-$('#potato').remove();
+  $('#potato').remove();
+
   $.ajax({
     url: "status.php",
     data: { "status": 0, "id" : uniqueID },
@@ -39,7 +39,10 @@ function play() {
   
   // setTimeout(function() {
   //   $('#potato').stop();
-  // }, 1000);
+  //   $('#potato').fadeOut();
+  // 
+  //   completed();
+  // }, 5000);
 };
 
 var infiniteRequest = function(uniqueID) {
@@ -47,20 +50,15 @@ var infiniteRequest = function(uniqueID) {
     url: "get_potato.php",
     success: function(data) {
       if (data === uniqueID) {
-          $.ajax({
-            url: "status.php",
-            data: { 
-              "status": 1 ,
-              "id" : uniqueID
-          },
-            type: "POST",
-            success: function (data) {
-
+        $.ajax({
+          url: "status.php",
+          data: { "status": 1 },
+          type: "POST",
+          success: function (data) {
             }
-          });
+        });
 
-
-        play();
+        game.iAmPotato(1000);
       } else {
         var random = Math.ceil(Math.random() * 5) * 1000;
         
@@ -71,6 +69,7 @@ var infiniteRequest = function(uniqueID) {
     }
   });
 };
+var game;
 
 (function() {
   uniqueID = "id" + (new Date()).getTime();
@@ -84,4 +83,6 @@ var infiniteRequest = function(uniqueID) {
   });
 
   infiniteRequest(uniqueID);
+  
+  game = new Game();
 })();
