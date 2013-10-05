@@ -1,44 +1,43 @@
 function completed() {
-  // $.ajax({
-  //   url: "service.php",
-  //   data: // status (win or lose)
-  //   type: "POST",
-  //   success: function (data) {
-  //     console.log("post");
-  //   }
-  // });
-};
+  alert('hooray');
 
-function newPosition() {
-  var h = $(window).height() - 606;
-  var w = $(window).width() - 517;
+  $.ajax({
+    url: "status.php",
+    data: { "status": 1 },
+    type: "POST",
+    success: function (data) {
 
-  var nh = Math.floor(Math.random() * h);
-  var nw = Math.floor(Math.random() * w);
-
-  return [nh, nw];
-};
-
-function animateXYZ() {
-  var position = newPosition();
-
-  $('#potato').animate({ top: position[0], left: position[1] }, function() {
-    animateXYZ();   
+    }
   });
 };
 
-// game play
+function newPosition() {
+  var h = Math.floor(Math.random() * ($(window).height() - 606));
+  var w = Math.floor(Math.random() * ($(window).width() - 517));
+
+  return [h, w];
+};
+
+function animatePotato() {
+  var position = newPosition();
+
+  $('#potato').animate({ top: position[0], left: position[1] }, function() {
+    animatePotato();
+  });
+};
+
 function play() {
   $('<div id="potato"></div>').appendTo('body');
   
-  animateXYZ();
+  $('#potato').click(function() {
+    completed();
+  });
 
-  // game logic, click with timer
-
-  // success message
-  // failure message
-
-  completed();
+  animatePotato();
+  
+  // setTimeout(function() {
+  //   $('#potato').stop();
+  // }, 1000);
 };
 
 var infiniteRequest = function(uniqueID) {
@@ -66,7 +65,6 @@ var infiniteRequest = function(uniqueID) {
     data: { "id": uniqueID },
     type: "POST",
     success: function (data) {
-      console.log(data);
     }
   });
 
