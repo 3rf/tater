@@ -1,10 +1,18 @@
 <?php
 	include_once('bootstrap.php');
 
+	// Set options
+	$options = array('dir' => 'storage');
+	     
+	// Load the databases
+	$progress = Flintstone::load('status', $options);
+	$status = $progress->get('status');
+
 	//check if potato in progress
-	if(isset($_SESSION['status']) && $_SESSION['status'] == 1)
+	if($status['status'] == 1)
 	{
-		header("HTTP/1.0 404 Not Found");
+		echo 'potato is engaged';
+		//header("HTTP/1.0 404 Not Found");
 		exit;
 	}
 	else
@@ -14,14 +22,23 @@
 		     
 		// Load the databases
 		$users = Flintstone::load('users', $options);
+		$play = Flintstone::load('play', $options);
 
 		// Retrieve all key names
 	    $keys = $users->getKeys(); // returns array('bob', 'joe', ...)
 	    if($keys)
 	    {
-	    	$_SESSION['status'] = 1;
+	    	$user = $play->get('lastPlay');
+	    	if(isset($user['id']))
+	    	{
+	    		$newkeys = array_diff($keys, array($user['id']));
+	    		$keys = $newkeys;
+	    	}
+
 	    	$key = array_rand($keys);
+	    	$play->set('lastPlay', array('id' => $keys[$key]));
 	    	echo $keys[$key];
+	    	
 	    	exit;
 	    }
 	    else

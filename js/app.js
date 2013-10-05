@@ -8,7 +8,6 @@ function completed() {
     data: { "status": 0 },
     type: "POST",
     success: function (data) {
-
       infiniteRequest(uniqueID);
     }
   });
@@ -51,7 +50,6 @@ var infiniteRequest = function(uniqueID) {
     url: "get_potato.php",
     success: function(data) {
       if (data === uniqueID) {
-        // play();
         $.ajax({
           url: "status.php",
           data: { "status": 1 },
@@ -59,14 +57,8 @@ var infiniteRequest = function(uniqueID) {
           success: function (data) {
             }
         });
-        
-        
+
         game.iAmPotato(1000);
-        
-        
-        
-        
-        
       } else {
         var random = Math.ceil(Math.random() * 5) * 1000;
         
@@ -80,7 +72,7 @@ var infiniteRequest = function(uniqueID) {
 var game;
 
 (function() {
- uniqueID = "id" + (new Date()).getTime();
+  uniqueID = "id" + (new Date()).getTime();
 
   $.ajax({
     url: "add_user.php",
