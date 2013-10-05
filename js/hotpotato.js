@@ -2,10 +2,6 @@ function Game() {
 	var self = this;
 	self.canvas = document.getElementById('canvas');
 	
-	self.init = function() {
-		//self.createBackground();
-		//self.iAmPotato();
-	};
 
 	self.iAmPotato = function(time) {
 		self.duration = time || 5000;
@@ -26,10 +22,14 @@ function Game() {
 	self.youLose = function() {
 		self.potato.removeEventListener('click');
 		self.canvas.style.backgroundColor = '#fd411b';
-		setTimeout(function(){self.layer.remove();},400);
-	  $(self.potato).stop();
-	  self.potato.className = 'dead';
-	  //-webkit-animation: animateDead 1s steps(3, end) infiniteself.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+		self.layer.remove();
+	  	$(self.potato).stop();
+	  	var newPotato = this.potato.cloneNode(true);
+	  	newPotato.className = 'dead';
+	  	self.canvas.replaceChild(newPotato, self.potato);
+	  	self.potato = document.getElementById('potato');
+	  	self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+	  
 	};
 	self.animateBackground = function() {
 		var layer = document.createElement('div');
@@ -39,6 +39,7 @@ function Game() {
 		self.layer.style.webkitAnimationName = 'backgroundAnimation';
 		self.layer.style.webkitAnimationDuration = '1s';
 		self.layer.style.webkitAnimationIterationCount = 'infinite';
+
 
 	};
 	self.youWin = function(e) {

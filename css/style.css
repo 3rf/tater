@@ -23,7 +23,6 @@ body {
 	width: 100%;
 	height: 100%;
 	background-color: #57dddf;
-	-webkit-transition: background-color .5s;
 }
 
 #canvas #layer { 
@@ -57,6 +56,4 @@ body {
     background-repeat: no-repeat;
     width: 501px;
     height: 235px;
-    -webkit-animation: animateDead 1s steps(3, end) infinite;
-    
 }
