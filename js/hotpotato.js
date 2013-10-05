@@ -6,7 +6,7 @@ function Game() {
 	self.iAmPotato = function(time) {
 		self.duration = time || 5000;
 		
-		$('#canvas h2').css({'display' : 'block'});
+		$('#canvas h2').show();
 		self.timer = setInterval(self.countTime, 1000);
 		self.animateBackground();
 		self.createPotato();
@@ -16,6 +16,7 @@ function Game() {
 			self.duration  -= 1000;
 			$('#canvas h2').html(self.duration/1000+'s');
 		} else {
+			$('#canvas h2').html('0s');
 			clearInterval(self.timer);
 			self.youLose();
 		}

@@ -2,7 +2,7 @@ var uniqueID;
 
 function completed() {
   $('#potato').remove();
-  
+  $('#canvas h2').html('').hide();
 
   $.ajax({
     url: "status.php",
