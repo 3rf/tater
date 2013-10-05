@@ -5,7 +5,7 @@ function completed() {
 $('#potato').remove();
   $.ajax({
     url: "status.php",
-    data: { "status": 0 },
+    data: { "status": 0, "id" : uniqueID },
     type: "POST",
     success: function (data) {
       infiniteRequest(uniqueID);
