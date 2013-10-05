@@ -26,6 +26,19 @@ function Game() {
     $(self.potato).stop();
     self.potato.className = 'dead';
     self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+    
+    
+    setTimeout(function(){
+      $.ajax({
+        url: "status.php",
+        data: { "status": 0, "id" : uniqueID },
+        type: "POST",
+        success: function (data) {
+      
+        }
+      });
+	  },1000);
+	  
 	};
 	self.animateBackground = function() {
 		var layer = document.createElement('div');
