@@ -2,10 +2,6 @@ function Game() {
 	var self = this;
 	self.canvas = document.getElementById('canvas');
 	
-	self.init = function() {
-		//self.createBackground();
-		//self.iAmPotato();
-	};
 
 	self.iAmPotato = function(time) {
 		self.duration = time || 5000;
@@ -27,10 +23,23 @@ function Game() {
 	self.youLose = function() {
 		self.potato.removeEventListener('click');
 		self.canvas.style.backgroundColor = '#fd411b';
-		setTimeout(function(){self.layer.remove();},400);
-	  $(self.potato).stop();
-	  self.potato.className = 'dead';
-	  self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+		self.layer.remove();
+    $(self.potato).stop();
+    self.potato.className = 'dead';
+    self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+    
+    
+    setTimeout(function(){
+      $.ajax({
+        url: "status.php",
+        data: { "status": 0, "id" : uniqueID },
+        type: "POST",
+        success: function (data) {
+      
+        }
+      });
+	  },1000);
+	  
 	};
 	self.animateBackground = function() {
 		var layer = document.createElement('div');
@@ -41,11 +50,24 @@ function Game() {
 		self.layer.style.webkitAnimationDuration = '1s';
 		self.layer.style.webkitAnimationIterationCount = 'infinite';
 
+
 	};
 	self.youWin = function(e) {
-		self.layer.style.webkitAnimation.PlayState = 'paused';
-		self.layer.style.opacity = 0;
 		clearInterval(self.timer);
+		
+		 $(self.potato).stop();
+  	  self.potato.className = 'success';
+		
+		  self.canvas.style.backgroundColor = '#57dddf';
+  		self.layer.remove();
+  
+		  setTimeout(function(){
+
+    		completed();
+		  },1000);
+    
+
+		
 		e.preventDefault();
 	};
 	

@@ -2,6 +2,7 @@ var uniqueID;
 
 function completed() {
   $('#potato').remove();
+  
 
   $.ajax({
     url: "status.php",
@@ -58,7 +59,7 @@ var infiniteRequest = function(uniqueID) {
             }
         });
 
-        game.iAmPotato(10000);
+        game.iAmPotato(7000);
       } else {
         var random = Math.ceil(Math.random() * 5) * 1000;
         
