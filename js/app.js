@@ -59,7 +59,7 @@ var infiniteRequest = function(uniqueID) {
             }
         });
 
-        game.iAmPotato(7000);
+        game.iAmPotato(10000);
       } else {
         var random = Math.ceil(Math.random() * 5) * 1000;
         

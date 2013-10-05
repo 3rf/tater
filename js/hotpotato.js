@@ -20,7 +20,9 @@ function Game() {
 		}
 	};
 	self.youLose = function() {
-		self.potato.removeEventListener('click');
+	  $(self.potato).off('click');
+		//self.potato.removeEventListener('click');
+		self.potato.style.cursor = 'default';
 		self.canvas.style.backgroundColor = '#fd411b';
 		self.layer.remove();
     $(self.potato).stop();
@@ -92,8 +94,8 @@ function Game() {
 		self.potato = document.getElementById('potato');
 		self.potato.cssText = '-webkit-animation: animate 1s steps(5, end) infinite';
 		self.animatePotato();
-
-		self.potato.addEventListener('click', self.youWin, false);
+    $(self.potato).on('click', self.youWin);
+		//self.potato.addEventListener('click', self.youWin, false);
 	};
 
 }
