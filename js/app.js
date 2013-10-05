@@ -49,7 +49,10 @@ var infiniteRequest = function(uniqueID) {
       if (data === uniqueID) {
           $.ajax({
             url: "status.php",
-            data: { "status": 1 },
+            data: { 
+              "status": 1 ,
+              "id" : uniqueID
+          },
             type: "POST",
             success: function (data) {
 

@@ -22,11 +22,19 @@
 		     
 		// Load the databases
 		$users = Flintstone::load('users', $options);
+		$play = Flintstone::load('play', $options);
 
 		// Retrieve all key names
 	    $keys = $users->getKeys(); // returns array('bob', 'joe', ...)
 	    if($keys)
 	    {
+	    	$user = $play->get('lastPlay');
+	    	if(isset($user['id']))
+	    	{
+	    		$newkeys = array_diff($keys, array($user['id']));
+	    		$keys = $newkeys;
+	    	}
+
 	    	$key = array_rand($keys);
 	    	echo $keys[$key];
 	    	exit;
