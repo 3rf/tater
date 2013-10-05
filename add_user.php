@@ -7,7 +7,7 @@
 		exit;
 	}
 
-	$id = $_POST('id');
+	$id = $_POST['id'];
 
 	//add id to list
 	try {
