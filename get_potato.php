@@ -36,7 +36,9 @@
 	    	}
 
 	    	$key = array_rand($keys);
+	    	$play->set('lastPlay', array('id' => $keys[$key]));
 	    	echo $keys[$key];
+	    	
 	    	exit;
 	    }
 	    else
