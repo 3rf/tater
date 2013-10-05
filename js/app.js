@@ -1,12 +1,14 @@
+var uniqueID;
+
 function completed() {
   alert('hooray');
-
+$('#potato').remove();
   $.ajax({
     url: "status.php",
-    data: { "status": 1 },
+    data: { "status": 0 },
     type: "POST",
     success: function (data) {
-
+      infiniteRequest(uniqueID);
     }
   });
 };
@@ -45,6 +47,16 @@ var infiniteRequest = function(uniqueID) {
     url: "get_potato.php",
     success: function(data) {
       if (data === uniqueID) {
+          $.ajax({
+            url: "status.php",
+            data: { "status": 1 },
+            type: "POST",
+            success: function (data) {
+
+            }
+          });
+
+
         play();
       } else {
         var random = Math.ceil(Math.random() * 5) * 1000;
@@ -58,7 +70,7 @@ var infiniteRequest = function(uniqueID) {
 };
 
 (function() {
-  var uniqueID = "id" + (new Date()).getTime();
+  uniqueID = "id" + (new Date()).getTime();
 
   $.ajax({
     url: "add_user.php",
