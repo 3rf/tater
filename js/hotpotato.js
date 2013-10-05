@@ -62,13 +62,11 @@ function Game() {
 		
 		  self.canvas.style.backgroundColor = '#57dddf';
   		self.layer.remove();
-  
+
 		  setTimeout(function(){
 
     		completed();
-		  },1000);
-    
-
+		  },5000);
 		
 		e.preventDefault();
 	};
