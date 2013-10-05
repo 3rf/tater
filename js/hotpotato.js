@@ -10,14 +10,15 @@ function Game() {
 	self.iAmPotato = function(time) {
 		self.duration = time || 5000;
 		
-		self.timer = setInterval(self.countTime, 100);
+		$('#canvas h2').css({'display' : 'block'});
+		self.timer = setInterval(self.countTime, 1000);
 		self.animateBackground();
 		self.createPotato();
 	};
 	self.countTime = function() {
-		if (self.duration>100) {
-			self.duration  -= 100;
-			
+		if (self.duration>1000) {
+			self.duration  -= 1000;
+			$('#canvas h2').html(self.duration/1000+'s');
 		} else {
 			clearInterval(self.timer);
 			self.youLose();

@@ -35,6 +35,23 @@ body {
 	
 }
 
+#canvas h2{
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    font-family: 'Helvetica','sans-serif';
+    font-size: 37px;
+    z-index: 10000;
+    background: url('../img/timer_sprite.png') no-repeat -7px top;
+    width: 215px;
+    height: 181px;
+    text-align: center;
+    line-height: 219px;
+}
+
+
 @-webkit-keyframes animate {
     from { background-position: 0 0; }
     to { background-position: 0 -1700px; }
