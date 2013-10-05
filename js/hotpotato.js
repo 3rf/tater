@@ -29,7 +29,7 @@ function Game() {
 		setTimeout(function(){self.layer.remove();},400);
 	  $(self.potato).stop();
 	  self.potato.className = 'dead';
-	  self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+	  //-webkit-animation: animateDead 1s steps(3, end) infiniteself.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
 	};
 	self.animateBackground = function() {
 		var layer = document.createElement('div');
