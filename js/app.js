@@ -10,35 +10,37 @@ function completed() {
 };
 
 // game play
-function callMe() {
-  console.log("hello");
+function play() {
+  console.log('playing');
+
+  $('<div id="potato"></div>').appendTo('body');
   
   // game logic, click with timer
-  
+
   // success message
   // failure message
-  
+
   completed();
 };
 
-var infiniteRequest = function() {
+var infiniteRequest = function(uniqueID) {
   $.ajax({
     url: "get_potato.php",
     success: function(data) {
-      var random = Math.ceil(Math.random() * 10) * 1000;
-
-      if (data) {
-        callMe();
+      if (data === uniqueID) {
+        play();
       } else {
+        var random = Math.ceil(Math.random() * 10) * 1000;
+        
         setTimeout(function() {
-          infiniteRequest();
+          infiniteRequest(uniqueID);
         }, random);
       }
     }
   });
 };
 
-(function(){
+(function() {
   var uniqueID = "id" + (new Date()).getTime();
 
   $.ajax({
@@ -50,5 +52,5 @@ var infiniteRequest = function() {
     }
   });
 
-  infiniteRequest();
+  infiniteRequest(uniqueID);
 })();

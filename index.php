@@ -6,6 +6,5 @@
         <script src="js/app.js"></script>
     </head>
     <body>
-        <p>Hello world! This is HTML5 Boilerplate.</p>
     </body>
 </html>

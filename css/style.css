@@ -1,0 +1,23 @@
+@-webkit-keyframes animate {
+    from { background-position: 0 0; }
+    to { background-position: 0 -3030px; }
+}
+
+@-moz-keyframes animate {
+    from { background-position: 0 0; }
+    to { background-position: 0 -3030px; }
+}
+
+@keyframes animate {
+    from { background-position: 0 0; }
+    to { background-position: 0 -3030px; }
+}
+
+#potato {
+    width: 517px;
+    height: 626px;
+    background-image: url("../img/potato_sprite.png");
+    -webkit-animation: animate 1s steps(5, end) infinite;
+       -moz-animation: animate 1s steps(5, end) infinite;
+            animation: animate 1s steps(5, end) infinite;
+}
