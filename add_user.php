@@ -12,13 +12,16 @@
 	//add id to list
 	try {
 	    // Set options
-	    $options = array('dir' => '/storage');
+	    $options = array('dir' => 'storage');
 	     
 	    // Load the databases
 	    $users = Flintstone::load('users', $options);
 	     
 	    // Set keys
 	    $users->set($id, array('id' => $id));
+
+	    header("HTTP/1.1 200 Ok");
+	    exit;
 	 
 	}
 	catch (FlintstoneException $e) {
