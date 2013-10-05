@@ -23,12 +23,9 @@ function Game() {
 		self.potato.removeEventListener('click');
 		self.canvas.style.backgroundColor = '#fd411b';
 		self.layer.remove();
-	  	$(self.potato).stop();
-	  	var newPotato = this.potato.cloneNode(true);
-	  	newPotato.className = 'dead';
-	  	self.canvas.replaceChild(newPotato, self.potato);
-	  	self.potato = document.getElementById('potato');
-	  	self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
+    $(self.potato).stop();
+    self.potato.className = 'dead';
+    self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
 	};
 	self.animateBackground = function() {
 		var layer = document.createElement('div');

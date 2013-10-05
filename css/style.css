@@ -50,12 +50,14 @@ body {
     cursor: pointer;
     overflow: hidden;
     background-image: url("../img/potato_sprite.png");
+    -webkit-animation: animate 1s steps(5, end) infinite;
 }
 #potato.dead {
     background-image: url('../img/deadpotato_sprite.png');
     background-repeat: no-repeat;
     width: 501px;
     height: 235px;
+    -webkit-animation: '';
 }
 #potato.success {
     background-image: url('../img/success_potato.png');
