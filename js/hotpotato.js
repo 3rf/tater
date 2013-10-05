@@ -26,7 +26,7 @@ function Game() {
 	self.youLose = function() {
 		self.potato.removeEventListener('click');
 		self.canvas.style.backgroundColor = '#fd411b';
-		setTimeout(function(){self.layer.remove();},400);
+    self.layer.remove();
 	  $(self.potato).stop();
 	  self.potato.className = 'dead';
 	  self.potato.cssText = '-webkit-animation: animateDead 1s steps(3, end) infinite';
@@ -42,9 +42,21 @@ function Game() {
 
 	};
 	self.youWin = function(e) {
-		self.layer.style.webkitAnimation.PlayState = 'paused';
-		self.layer.style.opacity = 0;
 		clearInterval(self.timer);
+		
+		 $(self.potato).stop();
+  	  self.potato.className = 'success';
+		
+		  self.canvas.style.backgroundColor = '#57dddf';
+  		self.layer.remove();
+  
+		  setTimeout(function(){
+
+    		completed();
+		  },1000);
+    
+
+		
 		e.preventDefault();
 	};
 	
