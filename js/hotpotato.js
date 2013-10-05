@@ -45,6 +45,7 @@ function Game() {
 	self.youWin = function(e) {
 		self.layer.style.webkitAnimation.PlayState = 'paused';
 		self.layer.style.opacity = 0;
+		clearInterval(self.timer);
 		e.preventDefault();
 	};
 	
