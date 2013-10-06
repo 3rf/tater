@@ -1,7 +1,6 @@
 # Hot Potato
 
-Hot Potato is a thrilling multiplayer game for relieving boredom and building community. Built at Hack'n Jill Build'n Play  
-October 4th-5th, 2013 in New York, NY.
+Hot Potato is a thrilling multiplayer game for relieving boredom and building community. Built at [Hack'n Jill](http://hacknjill.com/) Build'n Play, October 4th-5th, 2013 at AlleyNYC in New York, NY.
 
 # Play
 
